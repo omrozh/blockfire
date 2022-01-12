@@ -23,4 +23,7 @@ def distribute(req):
     file_db.latest_index += 1
     file_db.save()
 
+    if file_db.latest_index == len(info):
+        os.system("rm -f " + file_path)
+
     return HttpResponse(info[file_db.latest_index-1])
