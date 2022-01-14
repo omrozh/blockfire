@@ -7,6 +7,6 @@ class FileRef(models.Model):
 
 
 class File(models.Model):
-    id_name = models.CharField(max_length=120)
-    latest_index = models.IntegerField()
-    copies = models.IntegerField()
+    id_name = models.CharField(max_length=120, unique=True)
+    latest_index = models.IntegerField(default=0)
+    copies = models.IntegerField(default=0)

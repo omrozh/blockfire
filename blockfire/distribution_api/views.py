@@ -1,7 +1,11 @@
 from django.http import HttpResponse
 import os
 from pathlib import Path
-from ..receiving_api.models import File, FileRef
+
+import sys
+sys.path.append("..")
+
+from receiving_api.models import File, FileRef
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,10 +24,12 @@ def distribute(req):
     file.close()
 
     file_db = File.objects.filter(id_name=distribution_file).first()
+
+    if file_db.latest_index == 0:
+        new_file_ref = FileRef(id_name=distribution_file, pathways={"first": []})
+        # insert storage node id
+
     file_db.latest_index += 1
     file_db.save()
-
-    if file_db.latest_index == len(info):
-        os.system("rm -f " + file_path)
 
     return HttpResponse(info[file_db.latest_index-1])
