@@ -24,3 +24,5 @@ The subject network nodes are connected to the central server through a HTTP Soc
 When the Blockfire server receives the data it uses the socket connections command the relevant network nodes to stream the data directly to the target. Thus allowing Blockfire to be able to work with extremely low bandwith. The connections are identified using a unique identifier key.
 
 Files are encoded and split into smaller pieces and distributed across the network allowing no single network node to have an entire file making it impossible to decrypt.
+
+Its decentralised architecture makes it up to 1000 times more efficient and cheaper compared to any of the competitors due to almost non-existent broadband cost due to its extremely distributed network working like a huge CDN.
